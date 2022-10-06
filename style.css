@@ -10,6 +10,8 @@
 
 :root {
     --bg-color: #e34a6f;
+    --book-color: #b2a198;
+    --book-title-color: #053225;
     --header-size: 5rem;
     --footer-size: 3rem;
     font-size: 16px;
@@ -37,4 +39,38 @@
 #main {
     min-height: calc(100vh - var(--header-size) - var(--footer-size));
     background-color: #f7b2bd;
+}
+
+#library-container {
+    height: 100%;
+    width: 100%;
+    padding: 1rem;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(15rem, 1fr));
+    grid-template-rows: repeat(auto-fill, minmax(10rem, 1fr));
+    gap: 0.5rem;
+}
+
+#library-container>.book {
+    background-color: var(--book-color);
+    border-radius: 0.5em;
+    padding: 0.5rem 1rem;
+    display: grid;
+    grid-template-rows: 3fr repeat(3, minmax(3ch, 1fr));
+    align-items: center;
+    box-shadow: 0.4rem 0.4rem 0.5rem -0.5rem black;
+}
+
+.book-title {
+    text-align: center;
+    font-size: 1.5rem;
+    font-weight: bold;
+    padding: 0.5rem 0;
+}
+
+.book-pages,
+.book-status,
+.book-author {
+    display: grid;
+    grid-template-columns: 10ch 1fr;
 }
