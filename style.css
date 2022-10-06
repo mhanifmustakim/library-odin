@@ -1,0 +1,40 @@
+*,
+*::after,
+*::before {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-size: inherit;
+    color: inherit;
+}
+
+:root {
+    --bg-color: #e34a6f;
+    --header-size: 5rem;
+    --footer-size: 3rem;
+    font-size: 16px;
+    font-family: 'Roboto';
+}
+
+#layout-master {
+    width: 100vw;
+    display: grid;
+    grid-template: var(--header-size) auto var(--footer-size) / 1fr;
+}
+
+#header,
+#footer {
+    background-color: var(--bg-color);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#header {
+    font-size: 2rem;
+}
+
+#main {
+    min-height: calc(100vh - var(--header-size) - var(--footer-size));
+    background-color: #f7b2bd;
+}
