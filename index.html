@@ -20,13 +20,27 @@
         </div>
         <div id="main">
             <div id="library-container">
-                <div data-index="0" class="book">
-                    <header class="book-title">Book 1</header>
-                    <p class="book-author"><span>Written by </span>: Manusia</p>
-                    <p class="book-pages"><span>No. pages </span>: 10</p>
-                    <p class="book-status"><span>Status </span>: Finished</p>
-                </div>
+
             </div>
+            <button id="create-btn">Add Book To Library</button>
+            <form id="create-book-form" onsubmit="return false">
+                <div class="input-group">
+                    <label for="title">Title</label>
+                    <input type="text" name="title" id="title" required>
+                </div>
+                <div class="input-group">
+                    <label for="author">Author</label>
+                    <input type="text" name="author" id="author" required>
+                </div>
+                <div class="input-group">
+                    <label for="numPages">No. pages</label>
+                    <input type="number" min="1" name="numPages" id="numPages" required>
+                </div>
+                <div class="input-group">
+                    <input type="checkbox" name="isRead" id="isRead" required>
+                    <label for="isRead">Finished reading the book</label>
+                </div>
+            </form>
         </div>
         <div id="footer">
             <footer>

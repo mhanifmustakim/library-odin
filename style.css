@@ -11,7 +11,7 @@
 :root {
     --bg-color: #e34a6f;
     --book-color: #b2a198;
-    --book-title-color: #053225;
+    --create-btn-color: #60a561;
     --header-size: 5rem;
     --footer-size: 3rem;
     font-size: 16px;
@@ -42,12 +42,11 @@
 }
 
 #library-container {
-    height: 100%;
     width: 100%;
     padding: 1rem;
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(16rem, 1fr));
-    grid-template-rows: repeat(auto-fill, minmax(10rem, 1fr));
+    grid-auto-rows: 10rem;
     gap: 1rem;
 }
 
@@ -63,7 +62,7 @@
 
 .book-title {
     text-align: center;
-    font-size: 1.5rem;
+    font-size: 1.5em;
     font-weight: bold;
     padding: 0.5rem 0;
 }
@@ -75,11 +74,34 @@
     grid-template-columns: 10ch 1fr;
 }
 
+#create-btn {
+    margin-left: 1rem;
+    margin-bottom: 1rem;
+    padding: 1rem 1.5rem;
+    background-color: var(--create-btn-color);
+    border: none;
+    border-radius: 1em;
+    box-shadow: 0rem 0.2rem 0.3rem -0.2rem black;
+    font-weight: bold;
+}
+
+#create-book-form {
+    display: none;
+}
+
 @media screen and (min-width: 1024px) {
     #library-container {
+        font-size: 1.1rem;
         padding: 2rem;
-        grid-template-columns: repeat(auto-fill, minmax(17.5rem, 1fr));
-        grid-template-rows: repeat(auto-fill, minmax(15rem, 1fr));
+        grid-template-columns: repeat(auto-fill, minmax(30ch, 1fr));
+        grid-auto-rows: 15rem;
         gap: 2rem;
+    }
+
+    #create-btn {
+        margin-left: 2rem;
+        margin-bottom: 2rem;
+        padding: 1.5rem 2rem;
+        font-size: 1.2rem;
     }
 }
