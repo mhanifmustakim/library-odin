@@ -10,12 +10,30 @@
 
 :root {
     --bg-color: #e34a6f;
+    --main-color: #f7b2bd;
     --book-color: #b2a198;
     --create-btn-color: #60a561;
     --header-size: 5rem;
     --footer-size: 3rem;
     font-size: 16px;
     font-family: 'Roboto';
+}
+
+input[type="text"],
+input[type="number"] {
+    border-radius: 0.5rem;
+    padding: 0.4rem 0;
+    padding-left: 1ch;
+    border: none;
+    background-color: whitesmoke;
+}
+
+input:active,
+input:focus,
+input:focus-visible {
+    background-color: #e5e5e5;
+    border: none;
+    outline: none;
 }
 
 #layout-master {
@@ -38,7 +56,7 @@
 
 #main {
     min-height: calc(100vh - var(--header-size) - var(--footer-size));
-    background-color: #f7b2bd;
+    background-color: var(--main-color);
 }
 
 #library-container {
@@ -83,10 +101,57 @@
     border-radius: 1em;
     box-shadow: 0rem 0.2rem 0.3rem -0.2rem black;
     font-weight: bold;
+    color: white;
 }
 
 #create-book-form {
-    display: none;
+    margin: 1rem 1rem 2rem 1rem;
+    padding: 1rem 1.5rem;
+    background-color: white;
+    border-radius: 0.5em;
+}
+
+#create-book-form>header {
+    font-weight: bold;
+    font-size: 1.5em;
+    text-decoration: underline;
+    margin-bottom: 1rem;
+    text-align: center;
+}
+
+#create-book-form>.input-group {
+    margin-bottom: 0.5rem;
+    display: grid;
+    grid-template-columns: 10ch 1fr;
+    align-items: center;
+    gap: 1ch;
+}
+
+#form-controls {
+    margin-top: 2rem;
+    display: flex;
+    justify-content: space-between;
+}
+
+#form-controls button {
+    font-weight: bold;
+    border: none;
+    border-radius: 0.5em;
+    box-shadow: 0rem 0.2rem 0.3rem -0.2rem black;
+    padding: 1rem 1rem;
+    color: white;
+}
+
+#cancel-btn {
+    background-color: red;
+}
+
+#submit-btn {
+    background-color: var(--create-btn-color);
+}
+
+.input-group> :first-child {
+    justify-self: end;
 }
 
 @media screen and (min-width: 1024px) {
