@@ -21,11 +21,17 @@
 
 input[type="text"],
 input[type="number"] {
+    width: 100%;
     border-radius: 0.5rem;
     padding: 0.4rem 0;
     padding-left: 1ch;
     border: none;
     background-color: whitesmoke;
+}
+
+input[type="checkbox"] {
+    width: 1em;
+    height: 1em;
 }
 
 input:active,
@@ -115,12 +121,12 @@ input:focus-visible {
     font-weight: bold;
     font-size: 1.5em;
     text-decoration: underline;
-    margin-bottom: 1rem;
+    margin-bottom: 1em;
     text-align: center;
 }
 
 #create-book-form>.input-group {
-    margin-bottom: 0.5rem;
+    margin-bottom: 0.5em;
     display: grid;
     grid-template-columns: 10ch 1fr;
     align-items: center;
@@ -128,7 +134,7 @@ input:focus-visible {
 }
 
 #form-controls {
-    margin-top: 2rem;
+    margin-top: 2em;
     display: flex;
     justify-content: space-between;
 }
@@ -136,9 +142,9 @@ input:focus-visible {
 #form-controls button {
     font-weight: bold;
     border: none;
-    border-radius: 0.5em;
-    box-shadow: 0rem 0.2rem 0.3rem -0.2rem black;
-    padding: 1rem 1rem;
+    border-radius: 1em;
+    box-shadow: 0em 0.2em 0.3em -0.2em black;
+    padding: 1em 1em;
     color: white;
 }
 
@@ -152,6 +158,33 @@ input:focus-visible {
 
 .input-group> :first-child {
     justify-self: end;
+}
+
+@media screen and (min-width: 425px) {
+    #create-book-form {
+        max-width: 500px;
+        margin: 2rem auto;
+    }
+}
+
+
+@media screen and (min-width: 768px) {
+    #create-book-form {
+        max-width: none;
+        width: 600px;
+        height: 500px;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        font-size: 1.5rem;
+        padding: 0 2em;
+        padding-top: 1.5em;
+    }
+
+    #create-book-form>.input-group {
+        margin-bottom: 1em;
+    }
 }
 
 @media screen and (min-width: 1024px) {
