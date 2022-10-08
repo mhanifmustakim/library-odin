@@ -19,9 +19,7 @@
             <h1>My Personal Library</h1>
         </div>
         <div id="main">
-            <div id="library-container">
-
-            </div>
+            <div id="library-container"></div>
             <button id="create-btn">Add Book To Library</button>
             <form id="create-book-form" onsubmit="return false" hidden>
                 <header>New Book Form</header>
@@ -38,7 +36,7 @@
                     <input type="number" min="1" name="numPages" id="numPages" required>
                 </div>
                 <div class="input-group">
-                    <input type="checkbox" name="isRead" id="isRead" required>
+                    <input type="checkbox" name="isRead" id="isRead">
                     <label for="isRead">Finished reading the book</label>
                 </div>
                 <div id="form-controls">

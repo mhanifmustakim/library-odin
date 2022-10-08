@@ -1,5 +1,31 @@
 const libraryContainer = document.querySelector("#library-container");
+const createBtn = document.querySelector("#create-btn");
+const createBookForm = document.querySelector("#create-book-form");
+const submitBtn = document.querySelector("#submit-btn");
+const cancelBtn = document.querySelector("#cancel-btn");
 let myLibrary = [];
+
+function clearForm() {
+    const inputs = createBookForm.querySelectorAll("input");
+    inputs.forEach((input) => {
+        if (input.getAttribute("type") == "checkbox") {
+            input.checked = false;
+        } else {
+            input.value = "";
+        }
+    });
+    createBookForm.hidden = true;
+    createBtn.hidden = false;
+}
+
+[cancelBtn, createBtn].forEach(
+    (btn) => btn.addEventListener("click", () => {
+        createBookForm.hidden = createBookForm.hidden ? false : true;
+        createBtn.hidden = createBtn.hidden ? false : true;
+        if (createBookForm.hidden === false) createBookForm.scrollIntoView();
+        else clearForm();
+    })
+)
 
 function Book(title, author, numPages, isRead) {
     this.title = title;
@@ -29,6 +55,26 @@ Book.prototype.createNode = function () {
     return bookNode;
 }
 
+
+createBookForm.addEventListener("submit", (e) => {
+    const inputs = createBookForm.querySelectorAll("input");
+    const submitted = {};
+
+    inputs.forEach((input) => {
+        if (input.getAttribute("type") == "checkbox") {
+            submitted.isRead = input.checked ? true : false;
+        } else {
+            submitted[input.name] = input.value;
+        }
+    });
+
+    const thisBook = new Book(submitted.title, submitted.author, submitted.numPages, submitted.isRead);
+    addBookToLibrary(thisBook);
+    displayLibrary();
+    clearForm();
+})
+
+
 function createBookInfo(key, value) {
     const node = document.createElement("p");
     const span = document.createElement("span");
@@ -43,6 +89,7 @@ function createBookInfo(key, value) {
             break
         case "status":
             span.innerText = "Status"
+            text.textContent = value === true ? ": Finished" : ": Not Finished";
     }
 
     node.appendChild(span);
@@ -73,5 +120,4 @@ const book3 = new Book("Book 3", "An-Nas", 40, true);
 
 [book1, book2, book3].forEach((book) => addBookToLibrary(book));
 
-console.log(myLibrary);
 displayLibrary();
