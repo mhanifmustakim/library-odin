@@ -40,6 +40,7 @@ Book.prototype.createNode = function () {
     const bookAuthor = document.createElement("p");
     const bookPages = document.createElement("p");
     const bookStatus = document.createElement("p");
+    const changeStatusBtn = document.createElement("button");
     const deleteBtn = document.createElement("button");
 
     bookNode.classList.add("book");
@@ -48,13 +49,19 @@ Book.prototype.createNode = function () {
     bookAuthor.appendChild(createBookInfo("author", this.author));
     bookPages.appendChild(createBookInfo("pages", this.numPages));
     bookStatus.appendChild(createBookInfo("status", this.isRead));
+    changeStatusBtn.innerText = `Mark as ${this.isRead ? "Not Finished" : "Finished"}`;
+    changeStatusBtn.classList.add("change-status-btn");
     deleteBtn.classList.add("book-delete-btn");
 
-    [bookTitle, bookAuthor, bookPages, bookStatus, deleteBtn].forEach(
+    [bookTitle, bookAuthor, bookPages, bookStatus, changeStatusBtn, deleteBtn].forEach(
         (attr) => bookNode.appendChild(attr)
     );
 
     return bookNode;
+}
+
+Book.prototype.toggleRead = function () {
+    this.isRead = this.isRead ? false : true;
 }
 
 createBookForm.addEventListener("submit", (e) => {
@@ -122,7 +129,15 @@ function displayLibrary() {
             const thisBook = e.target.parentElement;
             const index = thisBook.getAttribute("data-index");
             removeFromLibrary(index);
-            clearLibraryDisplay();
+            displayLibrary();
+        })
+    })
+
+    libraryContainer.querySelectorAll(".change-status-btn").forEach((btn) => {
+        btn.addEventListener("click", (e) => {
+            const thisBook = e.target.parentElement;
+            const index = thisBook.getAttribute("data-index");
+            myLibrary[index].toggleRead();
             displayLibrary();
         })
     })
