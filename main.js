@@ -40,6 +40,7 @@ Book.prototype.createNode = function () {
     const bookAuthor = document.createElement("p");
     const bookPages = document.createElement("p");
     const bookStatus = document.createElement("p");
+    const deleteBtn = document.createElement("button");
 
     bookNode.classList.add("book");
     bookTitle.classList.add("book-title");
@@ -47,14 +48,14 @@ Book.prototype.createNode = function () {
     bookAuthor.appendChild(createBookInfo("author", this.author));
     bookPages.appendChild(createBookInfo("pages", this.numPages));
     bookStatus.appendChild(createBookInfo("status", this.isRead));
+    deleteBtn.classList.add("book-delete-btn");
 
-    [bookTitle, bookAuthor, bookPages, bookStatus].forEach(
+    [bookTitle, bookAuthor, bookPages, bookStatus, deleteBtn].forEach(
         (attr) => bookNode.appendChild(attr)
     );
 
     return bookNode;
 }
-
 
 createBookForm.addEventListener("submit", (e) => {
     const inputs = createBookForm.querySelectorAll("input");
@@ -73,7 +74,6 @@ createBookForm.addEventListener("submit", (e) => {
     displayLibrary();
     clearForm();
 })
-
 
 function createBookInfo(key, value) {
     const node = document.createElement("p");
@@ -101,6 +101,10 @@ function addBookToLibrary(book) {
     myLibrary.push(book);
 }
 
+function removeFromLibrary(index) {
+    myLibrary.splice(index, 1);
+}
+
 function clearLibraryDisplay() {
     libraryContainer.innerHTML = "";
 }
@@ -111,6 +115,16 @@ function displayLibrary() {
         const bookNode = book.createNode();
         bookNode.setAttribute("data-index", index);
         libraryContainer.appendChild(bookNode);
+    })
+
+    libraryContainer.querySelectorAll(".book-delete-btn").forEach((btn) => {
+        btn.addEventListener("click", (e) => {
+            const thisBook = e.target.parentElement;
+            const index = thisBook.getAttribute("data-index");
+            removeFromLibrary(index);
+            clearLibraryDisplay();
+            displayLibrary();
+        })
     })
 }
 

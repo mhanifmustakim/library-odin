@@ -43,6 +43,10 @@ input:focus-visible {
     outline: none;
 }
 
+img.icon {
+    width: 1em;
+}
+
 #layout-master {
     width: 100vw;
     display: grid;
@@ -83,6 +87,7 @@ input:focus-visible {
     grid-template-rows: 3fr repeat(3, minmax(3ch, 1fr));
     align-items: center;
     box-shadow: 0.4rem 0.4rem 0.5rem -0.5rem black;
+    position: relative;
 }
 
 .book-title {
@@ -97,6 +102,19 @@ input:focus-visible {
 .book-author {
     display: grid;
     grid-template-columns: 10ch 1fr;
+}
+
+.book-delete-btn {
+    position: absolute;
+    width: 1.2em;
+    height: 1.2em;
+    top: 0.5em;
+    right: 0.5em;
+    background-color: red;
+    background-image: url("Assets/delete.svg");
+    color: white;
+    border-radius: 0.2em;
+    border: none;
 }
 
 #create-btn {
