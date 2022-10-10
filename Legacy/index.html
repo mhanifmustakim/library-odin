@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>Your Personal Library</h1>
+    <div id="collection">
+    </div>
+    <div id="options">
+        <button id="add-book-btn"><a href="#add-book-form">Add Book</a></button>
+        <button id="clear-btn">CLEAR</button>
+    </div>
+    <form id="add-book-form" class="card" action="#">
+        <header>Add New Book:</header>
+        <label for="title">Title:</label>
+        <input type="text" name="title" id="title" placeholder="Title of Book" required>
+        <br>
+        <label for="author">Author:</label>
+        <input type="text" name="author" id="author" placeholder="Author's Name" required>
+        <br>
+        <label for="page-count">Pages:</label>
+        <input type="number" name="page-count" id="page-count" placeholder="Number of Pages" required>
+        <br>
+        <label for="link">Link:</label>
+        <input type="text" name="link" id="link" placeholder="Link for e-books(optional)">
+        <br>
+        <input type="submit"><button type="button" id="form-exit-btn">Exit</button>
+    </form>
+
+    <script src="app.js"></script>
+</body>
+
+</html>
